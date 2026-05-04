@@ -116,7 +116,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
               <motion.div
                 variants={iv}
-                className="lg:col-span-5 rounded-3xl bg-surface-container-low p-10 min-h-[28rem] lg:h-[38rem] flex flex-col justify-between"
+                className="lg:col-span-5 rounded-3xl bg-surface-container-low p-6 lg:p-10 min-h-fit lg:h-[38rem] flex flex-col justify-between"
               >
                 <motion.div variants={iv} className="flex items-center gap-4">
                   <span className="font-mono text-[10px] uppercase font-bold text-primary tracking-[0.3em]">
@@ -131,7 +131,7 @@ export default function AboutPage() {
                   {highlights.map((item) => (
                     <span
                       key={item}
-                      className="inline-flex items-center justify-center rounded-full bg-surface-container-highest text-primary border border-primary/20 px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] font-bold text-center"
+                      className="inline-flex items-center justify-center rounded-full bg-surface-container-highest text-primary border border-primary/20 px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] font-bold text-center w-full lg:w-auto"
                     >
                       {item}
                     </span>
@@ -191,7 +191,7 @@ export default function AboutPage() {
             <h2
               className="font-display font-bold tracking-[-0.04em] text-on-surface leading-none select-none mb-12 lg:mb-16"
               style={{
-                fontSize: "clamp(5rem, 12vw, 10rem)",
+                fontSize: "clamp(3rem, 10vw, 10rem)",
                 WebkitTextStroke: "1px var(--on-surface)",
                 color: "transparent",
                 backgroundImage: "url('/about/about-01.png')",

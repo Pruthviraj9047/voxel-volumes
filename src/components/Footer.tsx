@@ -50,6 +50,7 @@ export default function Footer() {
           {[
             { href: "/home",    label: "Home" },
             { href: "/about",   label: "About" },
+            { href: "/projects", label: "Projects" },
             { href: "/contact", label: "Contact" },
           ].map(({ href, label }) => (
             <Link key={href} href={href} className="font-sans text-sm text-white/70 hover:text-white transition-colors">

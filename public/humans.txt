@@ -4,5 +4,5 @@ Location: Bangalore, India
 Built with: Next.js, Tailwind CSS, Framer Motion, Three.js
 
 /* SITE */
-Last update: 2025
+Last update: 2026
 Language: English
