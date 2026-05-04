@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  /* MUST be transparent — canvas sits behind at z-index:-1 */
+  background: transparent;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fcf9f3;
+  --foreground: #1c1c18;
+  --jaali-opacity: 0.175;
+
+  --primary: #87433b;
+  --primary-container: #a45a52;
+
+  --outline: #867370;
+  --outline-variant: #d9c1be;
+
+  --surface: #fcf9f3;
+  --surface-container-low: #f6f3ed;
+  --surface-container-highest: #e5e2dc;
+  --surface-container-lowest: #ffffff;
+
+  --on-surface: #1c1c18;
+  --error: #ba1a1a;
+
+  --secondary: #5f5e5e;
+  --secondary-container: #e4e2e1;
+
+  --ochre: #915f2f;
+
+  --accent:        #c9a84c;
+  --accent-hover:  #b8922f;
+  --text-primary:  #f0ebe3;
+  --text-muted:    #7a7065;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--primary);
+  --color-primary-container: var(--primary-container);
+
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+
+  --color-surface: var(--surface);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+
+  --color-on-surface: var(--on-surface);
+  --color-error: var(--error);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-container: var(--secondary-container);
+
+  --color-ochre: var(--ochre);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-noto-serif);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
-  background: var(--background);
+  /* NO background — transparent so canvas shows through on hero */
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.bg-aangan {
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-container) 100%);
 }
