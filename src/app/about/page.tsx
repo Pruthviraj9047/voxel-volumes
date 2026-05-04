@@ -162,21 +162,21 @@ export default function AboutPage() {
           className="bg-on-surface text-surface px-6 lg:px-12 py-16 lg:py-20 mt-8 lg:mt-12"
         >
           <motion.div variants={iv} className="relative z-10 max-w-5xl mx-auto w-full">
-            <div className="grid grid-cols-3 divide-x divide-white/10 border-t border-b border-white/10 py-10">
-              <div className="flex flex-col items-center gap-2 px-8">
-                <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/30 mb-3">Years in Industry</span>
+            <div className="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 divide-x-0 lg:divide-x divide-white/10 border-t border-b border-white/10 py-10">
+              <div className="flex flex-col items-center gap-2 px-8 py-8 lg:py-0">
+                <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/30 mb-3 text-center">Years in Industry</span>
                 <StatCounter end={7} label="" inverse />
               </div>
 
-              <div className="flex flex-col items-center gap-2 px-8 text-center">
-                <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/30 mb-3">Where Ideas Meet Craft</span>
-                <span className="font-display text-2xl lg:text-3xl font-bold text-surface tracking-[-0.03em] leading-tight">
+              <div className="flex flex-col items-center gap-2 px-8 py-8 lg:py-0 text-center">
+                <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/30 mb-3 text-center">Where Ideas Meet Craft</span>
+                <span className="font-display text-2xl lg:text-3xl font-bold text-surface tracking-[-0.03em] leading-tight whitespace-nowrap">
                   Creativity + Precision
                 </span>
               </div>
 
-              <div className="flex flex-col items-center gap-2 px-8">
-                <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/30 mb-3">Projects Across Karnataka</span>
+              <div className="flex flex-col items-center gap-2 px-8 py-8 lg:py-0">
+                <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/30 mb-3 text-center">Projects Across Karnataka</span>
                 <StatCounter end={30} label="" inverse />
               </div>
             </div>

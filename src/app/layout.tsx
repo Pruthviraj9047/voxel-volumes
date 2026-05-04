@@ -21,6 +21,12 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Voxel Volumes Studio",
   description: "Modern Indian Vernacular Architecture",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
+  authors: [{ name: "Pruthviraj Arun" }],
+  creator: "Pruthviraj Arun",
 };
 
 export default function RootLayout({
@@ -35,6 +41,7 @@ export default function RootLayout({
     >
       {/* No bg class — body is transparent so hero canvas shows through */}
       <body className="min-h-screen w-screen overflow-x-hidden flex flex-col font-sans text-foreground">
+        {/* Designed & developed by Pruthviraj Arun — github.com/Pruthviraj9047 */}
         {/* Noise texture overlay */}
         <div
           className="fixed inset-0 z-50 pointer-events-none opacity-[0.03]"

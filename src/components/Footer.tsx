@@ -86,6 +86,9 @@ export default function Footer() {
         </p>
         <p className="font-sans text-xs text-white/30">Vidyaranyapura, Bengaluru 560097</p>
       </div>
+      <p className="text-center text-[11px] text-white/30 tracking-widest uppercase mt-4 pb-2 font-mono select-none">
+        Website designed &amp; developed by Pruthviraj Arun
+      </p>
     </footer>
   );
 }
