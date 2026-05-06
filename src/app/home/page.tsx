@@ -159,7 +159,7 @@ function HeroCanvas() {
     if (!THREE) return;
 
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
-    renderer.setClearColor(0x0d0b08, 1);
+    renderer.setClearColor(0x8a7055, 1);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
     const parent = canvas.parentElement!;
@@ -262,19 +262,47 @@ function HeroCanvas() {
     };
     window.addEventListener("resize", onResize);
 
+    // ── Intro ripple state ──
+    // rippleT: time since mount (seconds). Ripple runs for ~2.5s then fades out.
+    let rippleT = 0;
+    const RIPPLE_DURATION = 5.5;   // seconds until ripple fully fades
+    const RIPPLE_SPEED = 18.0;      // world-units per second the wavefront travels
+    const RIPPLE_HEIGHT = 5.5;     // peak lift of voxels (world units)
+    const RIPPLE_WIDTH = 5.0;      // width of the wave ring (world units)
+
     let t = 0;
     const animate = () => {
       animRef.current = requestAnimationFrame(animate);
       t += 0.007;
+      rippleT += 0.016; // ~60fps increment in seconds
+
       raycaster.setFromCamera(mouse2D, camera);
       raycaster.ray.intersectPlane(groundPlane, mouseWorld);
+
+      // ripple envelope: fades in instantly, then fades out after RIPPLE_DURATION
+      const rippleFade = Math.max(0, 1 - rippleT / RIPPLE_DURATION);
+      const wavefront = rippleT * RIPPLE_SPEED; // how far out the peak has traveled
+
       for (let k = 0; k < count; k++) {
         const breath = Math.sin(t + k * 0.28) * 0.22;
+
+        // mouse-hover rise
         const dx = px[k] - mouseWorld.x;
         const dz = pz[k] - mouseWorld.z;
         const d2 = dx * dx + dz * dz;
-        const rise = d2 < 64 ? (1 - Math.sqrt(d2) / 8) ** 2 * 4.0 : 0;
-        dummy.position.set(px[k], breath + rise, pz[k]);
+        const hoverRise = d2 < 64 ? (1 - Math.sqrt(d2) / 8) ** 2 * 4.0 : 0;
+
+        // intro radial ripple: distance from grid centre
+        let introRise = 0;
+        if (rippleFade > 0) {
+          const dist = Math.sqrt(px[k] * px[k] + pz[k] * pz[k]);
+          const delta = dist - wavefront;           // signed dist from wavefront
+          // Gaussian bell centred on wavefront, width = RIPPLE_WIDTH
+          const bell = Math.max(0, Math.exp(-((delta) ** 2) / (RIPPLE_WIDTH ** 2)) + Math.exp(-((delta + 9) ** 2) / (RIPPLE_WIDTH ** 2)) * 0.6 + Math.exp(-((delta + 18) ** 2) / (RIPPLE_WIDTH ** 2)) * 0.35);
+          introRise = bell * RIPPLE_HEIGHT * rippleFade;
+        }
+
+        dummy.position.set(px[k], breath + hoverRise + introRise, pz[k]);
         dummy.updateMatrix();
         mesh.setMatrixAt(k, dummy.matrix);
       }
@@ -311,9 +339,9 @@ const services = [
 
 export default function HomePage() {
   return (
-    <>
+    <div className="bg-background">
       <Navbar />
-      <main className="w-full min-h-screen">
+      <main className="w-full min-h-screen bg-background">
 
         {/* ── Hero ── */}
         <motion.section
@@ -321,9 +349,8 @@ export default function HomePage() {
           className="relative min-h-[88vh] flex flex-col justify-center px-6 lg:px-20 py-24 overflow-hidden"
         >
           <HeroCanvas />
-          <div className="absolute inset-0 pointer-events-none" style={{
-            background: "linear-gradient(105deg, rgba(13,11,8,0.90) 0%, rgba(13,11,8,0.65) 45%, rgba(13,11,8,0.05) 100%)"
-          }} />
+          <div className="absolute inset-0 bg-black/55 md:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/10 hidden md:block" />
           <div className="relative z-10 max-w-3xl">
             <motion.span variants={iv} className="font-mono text-xs uppercase font-bold tracking-[0.22em]" style={{ color: "#FFB300" }}>
               Luxury in every detail
@@ -459,6 +486,6 @@ export default function HomePage() {
 
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

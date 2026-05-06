@@ -81,14 +81,23 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 max-w-[1440px] mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
+      <div className="border-t border-white/10 max-w-[1440px] mx-auto px-6 lg:px-12 py-6 flex flex-col gap-2 text-center sm:flex-row sm:items-center sm:justify-between">
         <p className="font-sans text-xs text-white/30 tracking-wider uppercase">
           © 2026 Voxel Volumes. All rights reserved.
         </p>
-        <p className="font-sans text-xs text-white/30">Vidyaranyapura, Bengaluru 560097</p>
+        <p className="font-sans text-xs text-white/30 sm:text-right">Vidyaranyapura, Bengaluru 560097</p>
       </div>
-      <p className="text-center text-[11px] text-white/30 tracking-widest uppercase mt-4 pb-2 font-mono select-none">
-        Website designed &amp; developed by Pruthviraj Arun
+      <p className="text-center text-[11px] text-white/30 tracking-widest uppercase mt-4 pb-2 font-mono px-6 lg:px-12">
+        Website designed &amp; developed by{" "}
+        <a
+          href="https://www.linkedin.com/in/pruthviraj-arun-598653403/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Pruthviraj Arun LinkedIn profile"
+          className="underline underline-offset-2 hover:text-white/60 transition-colors cursor-pointer"
+        >
+          Pruthviraj Arun - Click to learn more
+        </a>
       </p>
     </footer>
   );
