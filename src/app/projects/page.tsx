@@ -274,8 +274,8 @@ export default function ProjectsPage() {
                         onClick={closeLightbox}
                     >
                         <button
-                            onClick={closeLightbox}
-                            className="absolute top-6 right-6 text-white/60 hover:text-white transition-colors"
+                            onClick={e => {e.stopPropagation(); closeLightbox();}}
+                            className="absolute top-6 right-6 text-white/60 hover:text-white transition-colors z-10"
                             aria-label="Close"
                         >
                             <X className="w-8 h-8" />
