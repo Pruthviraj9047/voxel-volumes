@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Voxel Volumes Studio",
+  title: "Voxel Volumes",
   description: "Modern Indian Vernacular Architecture",
   icons: {
     icon: "/icon.png",
